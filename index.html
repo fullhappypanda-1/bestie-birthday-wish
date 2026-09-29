@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head><!-- Floating Birthday Pop Effects -->
+<div class="pop-container" id="pop-container"></div>
+<body>
+    <!-- Background Audio -->
+    <!-- Background Audio -->
+<audio id="bg-music" loop preload="auto">
+    <source src="assets/song.mpeg" type="audio/mpeg">
+
+</audio>
+    <button id="music-toggle" class="music-btn" aria-label="Toggle Music">
+        <svg id="music-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+        </svg>
+    </button>
+
+    <!-- Particles Container -->
+    <div id="particles"></div>
+
+    <!-- Opening Screen -->
+    <section id="opening" class="fullscreen-section active">
+        <div class="content fade-in-up">
+            <h1>Hey,Sonali ❤️</h1>
+            <p class="subtitle">I made something for you...</p>
+            <button id="open-btn" class="glow-btn">Open Your Surprise ✨</button>
+        </div><!-- Put these inside your hero-wrapper div -->
+<div class="star star-1">★</div>
+<div class="star star-2">✦</div>
+<div class="star star-3">★</div>
+    </section>
+
+    <!-- Main Content Container -->
+    <div id="main-content" class="hidden">
+        
+        <!-- Section 1 - Birthday -->
+        <section id="birthday" class="content-section">
+            <div class="content fade-in-up-scroll hidden-scroll">
+                <h1 class="hero-text">Happy Birthday,<br>MY Makare<div class="icons">
+    <span class="cake-color">🎂</span>
+<span class="heart-color">❤️</span>
+</div></h1>
+                <p class="hero-sub">Today is your day, and I just wanted to make it a little more special.</p>
+            </div>
+        </section>
+
+        <!-- Section 2 - Memories -->
+        <section id="memories" class="content-section">
+            <div class="content">
+                <p class="section-title fade-in-up-scroll hidden-scroll">Some moments become memories.<br>Some memories become forever.</p>
+                
+                <div class="gallery">
+                    <div class="polaroid fade-in-up-scroll hidden-scroll" style="--delay: 0.1s">
+                        <img src="assets/m1.jpeg" alt="Memory 1">
+                        <div class="caption"> in Your Sister's Marriage🥳</div>
+                    </div>
+                    <div class="polaroid fade-in-up-scroll hidden-scroll" style="--delay: 0.2s">
+                        <img src="assets/m2.jpeg" alt="Memory 2">
+                        <div class="caption">Our Holi Celebration ✨</div>
+                    </div>
+                    <div class="polaroid fade-in-up-scroll hidden-scroll" style="--delay: 0.3s">
+                        <img src="assets/m3.jpeg" alt="Memory 3">
+                        <div class="caption">Our College Picnic 🎉</div>
+                    </div>
+                    <div class="polaroid fade-in-up-scroll hidden-scroll" style="--delay: 0.4s">
+                        <img src="assets/m4.jpeg" alt="Memory 4">
+                        <div class="caption">my birthday 🎂</div>
+                        <div class="caption"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3 - Message -->
+        <section id="message" class="content-section message-section">
+            <div class="content message-container">
+                <p class="reveal-text hidden-scroll">Some people come into our lives and slowly become a part of our everyday life without us even realizing it. ❤️</p>
+                <p class="reveal-text hidden-scroll">From school days to college, from our daily evening talks to sharing secrets, endless gossip, stupid jokes, and countless memories — we’ve grown up together in so many ways. ❤️</p>
+                <p class="reveal-text hidden-scroll">You’re not just my bestie; you’re a beautiful part of my journey and someone I’ll always be grateful for.</p>
+                <p class="reveal-text hidden-scroll">No matter how much life changes, I hope our random talks, secrets, and crazy gossip never stop. 😂🫶</p>
+               <p class="reveal-text hidden-scroll">Thank u very much for being my best friend... 🫂</p>
+                <p class="reveal-text hidden-scroll">Love u more then word can say..💝.</p>
+                                <p class="reveal-text hidden-scroll">Keep smiling. Keep being you.💫</p>
+
+                <p class="reveal-text highlight hidden-scroll">Happy Birthday, Bestie.❤️</p>
+            </div>
+        </section>
+
+        <!-- Section 4 - Little Things -->
+        <section id="little-things" class="content-section">
+            <div class="content">
+                <div class="cards-grid">
+                    <div class="feature-card fade-in-up-scroll hidden-scroll" style="--delay: 0.1s">
+                        <h3>Your Smile 😊</h3>
+                        <p>Never lose it.</p>
+                    </div>
+                    <div class="feature-card fade-in-up-scroll hidden-scroll" style="--delay: 0.2s">
+                        <h3>Your Energy ✨</h3>
+                        <p>Always makes things better.</p>
+                    </div>
+                    <div class="feature-card fade-in-up-scroll hidden-scroll" style="--delay: 0.3s">
+                        <h3>Our Memories 📸</h3>
+                        <p>Too many to count.</p>
+                    </div>
+                    <div class="feature-card fade-in-up-scroll hidden-scroll" style="--delay: 0.4s">
+                        <h3>Our Friendship ❤️</h3>
+                        <p>Something I genuinely value.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5 - Final Surprise -->
+        <section id="final-surprise" class="content-section">
+            <div class="content dark-cinematic">
+                <div id="pre-reveal" class="fade-in-up-scroll hidden-scroll">
+                    <h2>One last thing...</h2>
+                    <button id="reveal-btn" class="glow-btn outline">Tap to reveal ❤️</button>
+                </div>
+                
+                <div id="post-reveal" class="hidden">
+                    <p class="final-message typing-effect">No matter how much life changes, I hope there will always be a little place for us in each other’s lives. ❤️
+</p>
+                    <h1 class="final-greeting fade-in">Happy Birthday once again,<br>My Makare.❤️</h1>
+                    <button id="replay-btn" class="glow-btn small">Replay Experience ↺</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

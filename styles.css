@@ -1,0 +1,476 @@
+:root {
+    --bg-color: rgb(15, 8, 53);
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --accent-pink: #ff758c;
+    --accent-purple: #c576ff;
+    --accent-blue: #769eff;
+    --glow-spread: 15px;
+}
+/* Floating birthday pop effects */
+.pop-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.pop-element {
+    position: absolute;
+    user-select: none;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    animation: burstAndFloat 3s forwards cubic-bezier(0.1, 0.8, 0.3, 1);
+    will-change: transform, opacity;
+}
+
+@keyframes burstAndFloat {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    }
+
+    15% {
+        opacity: 1;
+        transform: var(--burst-target) scale(1.2) rotate(45deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: var(--float-target) scale(0.6) rotate(360deg);
+    }
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    line-height: 1.6;
+}
+
+h1, h2, h3, .hero-text, .section-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+}
+
+/* Background gradient effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(27, 5, 79, 0.03) 0%, rgba(11, 12, 16, 0) 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 117, 140, 0.03) 0%, rgba(11, 12, 16, 0) 40%);
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* Particles Container */
+#particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+    animation: float-up linear infinite;
+}
+
+@keyframes float-up {
+    0% { transform: translateY(100vh) scale(0); opacity: 0; }
+    20% { opacity: 0.6; }
+    80% { opacity: 0.6; }
+    100% { transform: translateY(-20vh) scale(1); opacity: 0; }
+}
+
+/* Music Button */
+.music-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+
+.music-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 15px rgba(255, 117, 140, 0.3);
+}
+
+.music-btn.playing {
+    color: var(--accent-pink);
+    border-color: rgba(255, 117, 140, 0.3);
+}
+
+/* Utilities */
+.hidden { display: none !important; }
+.hidden-scroll { opacity: 0; transform: translateY(30px); transition: opacity 1s ease, transform 1s ease; }
+.show-scroll { opacity: 1; transform: translateY(0); }
+
+.fullscreen-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.content-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.content {
+    max-width: 800px;
+    width: 100%;
+}
+
+/* Opening Section */
+#opening {
+    background: radial-gradient(circle, rgb(4, 4, 65) 0%, rgba(11,12,16,1) 100%);
+}
+
+#opening h1 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #ff758c, #c576ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#opening .subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+/* Glow Buttons */
+.glow-btn {
+    background: linear-gradient(45deg, #ff758c, #c576ff);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(197, 118, 255, 0.4);
+    transition: all 0.3s ease;
+    font-weight: 500;
+}/* Star base styling */
+.star {
+    position: absolute;
+    color: #fff;
+    font-size: 24px;
+    /* This creates the soft glow effect using your pink/purple theme color */
+    text-shadow: 0 0 10px #ffb703, 0 0 20px #ff758c, 0 0 30px #ff758c;
+    opacity: 0;
+    animation: twinkle 3s infinite ease-in-out;
+    pointer-events: none; /* Keeps them decorative so they don't block clicks */
+}
+
+/* Position the stars around your content */
+.star-1 {
+    top: 25%;
+    left: 20%;
+    animation-delay: 0s;
+    font-size: 18px;
+}
+
+.star-2 {
+    top: 15%;
+    right: 25%;
+    animation-delay: 1s;
+    font-size: 28px;
+}
+
+.star-3 {
+    bottom: 30%;
+    right: 15%;
+    animation-delay: 2s;
+    font-size: 22px;
+}
+
+/* The smooth glowing/twinkling animation */
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.2;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+        text-shadow: 0 0 15px #fff, 0 0 25px #ff758c, 0 0 40px #ff758c;
+    }
+}
+
+.glow-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(197, 118, 255, 0.6);
+}
+
+.glow-btn.outline {
+    background: transparent;
+    border: 2px solid var(--accent-purple);
+    color: var(--accent-purple);
+    box-shadow: 0 0 15px rgba(197, 118, 255, 0.2);
+}
+
+.glow-btn.outline:hover {
+    background: rgba(197, 118, 255, 0.1);
+    box-shadow: 0 0 25px rgba(197, 118, 255, 0.4);
+}
+
+.glow-btn.small {
+    padding: 10px 25px;
+    font-size: 1rem;
+    margin-top: 30px;
+}
+
+/* Section 1 - Birthday */
+.hero-text {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 1.2;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #00d2ff, #c576ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 40px rgba(255,255,255,0.1);
+}
+.hero-text span, 
+.hero-text i {
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: initial !important;
+    text-shadow: none !important;
+}
+
+.cake-color {
+    color: #ffb703 !important;
+}
+
+.heart-color {
+    color: #e63946 !important; 
+}
+
+.hero-sub {
+    font-size: 1.2rem;
+    color: var(--accent-blue);
+    font-weight: 300;
+}
+
+/* Section 2 - Memories */
+.section-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 50px;
+    color: var(--text-primary);
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    perspective: 1000px;
+}
+
+.polaroid {
+    background: #fff;
+    padding: 15px 15px 40px 15px;
+    border-radius: 5px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    transform: rotate(calc(var(--delay) * 20deg - 5deg)); /* random slight tilt */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    width: 250px;
+    max-width: 100%;
+}
+
+.polaroid:nth-child(even) {
+    transform: rotate(calc(var(--delay) * -15deg + 2deg));
+}
+
+.polaroid:hover {
+    transform: rotate(0deg) scale(1.05);
+    box-shadow: 0 15px 30px rgba(255, 117, 140, 0.3);
+    z-index: 10;
+}
+
+.polaroid img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+.polaroid .caption {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #333;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 1.1rem;
+}
+
+/* Section 3 - Message */
+.message-section {
+    background: rgba(255,255,255,0.02);
+}
+
+.message-container {
+    max-width: 700px;
+    text-align: left;
+}
+
+.reveal-text {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    margin-bottom: 30px;
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+.reveal-text.highlight {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--accent-pink);
+    font-family: 'Playfair Display', serif;
+    margin-top: 50px;
+    text-align: center;
+}
+
+/* Section 4 - Little Things */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 40px 20px;
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(197, 118, 255, 0.3);
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.feature-card p {
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+/* Section 5 - Final Surprise */
+.dark-cinematic {
+    padding: 100px 0;
+}
+
+#pre-reveal h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: var(--text-secondary);
+}
+
+.final-message {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-primary);
+    margin-bottom: 40px;
+}
+
+.final-greeting {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    background: linear-gradient(to right, #00d2ff, #c576ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 40px;
+}
+
+/* Animations */
+.fade-in-up {
+    animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@media (max-width: 600px) {
+    .content-section {
+        padding: 40px 15px;
+    }
+    .gallery {
+        flex-direction: column;
+        align-items: center;
+    }
+    .polaroid {
+        transform: rotate(0deg) !important;
+        margin-bottom: 20px;
+    }
+}
